@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+#include <string_view>
+
+std::string takeName()
+{
+    std::string nameD{};
+    std::getline(std::cin >> std::ws, nameD);
+
+    return nameD;
+}
+
+int takeAge(std::string_view nameD)
+{
+    std::cout << "Enter " << nameD << "'s age: ";
+
+    int ageD{};
+    std::cin >> ageD;
+
+    return ageD;
+}
+
+int outputOlder(std::string_view namOne, int numOne, std::string_view namTwo, int numTwo)
+{
+    if(numOne == numTwo)
+    {
+        std::cout << namOne << " and " << namTwo << " are the same age! (" << numOne << ")";
+        return 0;
+    }
+    if(numOne >= numTwo)
+    {
+        std::cout << namOne << " (age " << numOne << ") is older than " << namTwo << " age (" << numTwo << ")";
+        return 0;
+    }
+    if(numOne <= numTwo)
+    {
+        std::cout << namTwo << " (age " << numTwo << ") is older than " << namOne << " age (" << numOne << ")";
+        return 0;
+    }
+}
+
+int main()
+{
+    std::cout << "Enter the name of person #1: ";
+    std::string namOne{ takeName() };
+
+    int numOne { takeAge(namOne) };
+
+
+
+
+    std::cout << "Enter the name of person #2: ";
+    std::string namTwo{ takeName() };
+
+    int numTwo { takeAge(namTwo) };
+
+    outputOlder(namOne, numOne, namTwo, numTwo);
+}
